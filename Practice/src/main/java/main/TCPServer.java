@@ -30,23 +30,24 @@ public class TCPServer implements Runnable {
     public void run() {
         ServerSocket ds = new ServerSocket(w);
         System.out.println("Server Musterini gozleyir");
-        synchronized(this){
-        Socket connection = ds.accept();
+        
+            Socket connection = ds.accept();
 
-        InputStream inputStream = connection.getInputStream();
-        DataInputStream ff = new DataInputStream(inputStream);
+            InputStream inputStream = connection.getInputStream();
+            DataInputStream ff = new DataInputStream(inputStream);
 
-        int length = ff.readInt();
-        if (length > 0) {
+            int length = ff.readInt();
+            if (length > 0) {
 
-            byte[] arr = new byte[length];
-            ff.readFully(arr);
+                byte[] arr = new byte[length];
+                ff.readFully(arr);
 
-            byte[] message = arr;
-            FileUtility.writeBytes("C:\\Users\\Acer\\Desktop\\picture.jpg", message);
-        } else {
-            throw new NegativeArraySizeException();
-        }
-    }
+                byte[] message = arr;
+                FileUtility.writeBytes("C:\\Users\\Acer\\Desktop\\picture.jpg", message);
+            } else {
+                throw new NegativeArraySizeException();
+            }
+
+        
     }
 }
