@@ -30,6 +30,7 @@ public class TCPClient implements Runnable {
     @SneakyThrows
     @Override
     public void run() {
+        Thread.sleep(5000);
         Socket hh = new Socket(host, port);
         OutputStream outputStream = hh.getOutputStream();
         DataOutputStream ss = new DataOutputStream(outputStream);
